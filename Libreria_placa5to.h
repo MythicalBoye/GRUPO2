@@ -5,12 +5,16 @@ int PUState;
 #define PU 3
 #define LED1 13
 #define LED2 12
+#define ON true
+#define OFF false
 
 //********************PROTOTIPO************************
 
 void DeclararPines ();
  
 int LeerPulsadores ();
+
+int EstadoLed();
 
 //********************CUERPO************************
 
@@ -19,6 +23,19 @@ void DeclararPines(){
   pinMode(PD, INPUT);
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
+}
+
+void EstadoLed(int num, bool state){
+  if (num == 1)
+  {
+    num = 13;
+  }else{
+    if (num == 2)
+    {
+      num = 12;
+    }
+  }
+digitalWrite(num, state);
 }
 
 int LeerPulsadores(){
