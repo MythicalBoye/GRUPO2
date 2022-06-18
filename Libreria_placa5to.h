@@ -14,7 +14,7 @@ void DeclararPines ();
  
 int LeerPulsadores ();
 
-int EstadoLed();
+void EstadoLed(int, bool);
 
 //********************CUERPO************************
 
@@ -53,5 +53,5 @@ PUState = digitalRead(PU);
   return (2);
   }else{
   if (PDState == 0 || PUState == 1){
-  return (3345678);
+  return (3);
   }}}}}
