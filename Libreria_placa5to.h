@@ -60,16 +60,16 @@ PDState = digitalRead(PD);
 PUState = digitalRead(PU);
 
   if (PDState == 1 || PUState == 0){
-  return(1);
+  return(0);
   }else{
   if(PDState == 1 || PUState == 1){
-  return (0);
+  return (1);
   }else{
   if(PDState == 0 || PUState == 0){
-  return (3);
+  return (2);
   }else{
   if (PDState == 0 || PUState == 1){
-  return (2);
+  return (3);
   }}}}}
 
   float LeerPotenciometros(){
