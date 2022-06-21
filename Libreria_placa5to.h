@@ -15,8 +15,8 @@ int PUState;
 #define LED2 12
 
 //λ Estados λ//
-#define ON true
-#define OFF false
+#define ON HIGH
+#define OFF LOW
 
 //λ********************PROTOTIPO DE FUNCIONES************************λ
 
@@ -26,7 +26,7 @@ int LeerPulsadores (void);
 
 float LeerPotenciometros(void); //Lee los 2 potenciómetros y devuelve la suma de esos 2 valores
 
-void EstadoLed(int, bool); //Lee el número de led asignado y envía el valor ingresado al mismo
+void EstadoLed(int, int); //Lee el número de led asignado y envía el valor ingresado al mismo
 
 //********************CUERPO DE FUNCIONES************************
 
@@ -41,17 +41,15 @@ void DeclararPines(void){
   }
 }
 
-void EstadoLed(int num, bool state){
+void EstadoLed(int num, int state){
   if (num == 1)
   {
-    num = 13;
-  }else{
+    digitalWrite(LED1,state);
+  }
     if (num == 2)
     {
-      num = 12;
+    digitalWrite(LED2,state);
     }
-  }
-digitalWrite(num, state);
 }
 
 int LeerPulsadores(void){
@@ -59,16 +57,16 @@ int LeerPulsadores(void){
 PDState = digitalRead(PD);
 PUState = digitalRead(PU);
 
-  if (PDState == 1 || PUState == 0){
+  if (PUState == HIGH && PDState == LOW){
   return(0);
   }else{
-  if(PDState == 1 || PUState == 1){
+  if(PUState == HIGH && PDState == HIGH){
   return (1);
   }else{
-  if(PDState == 0 || PUState == 0){
+  if(PUState == LOW && PDState == LOW){
   return (2);
   }else{
-  if (PDState == 0 || PUState == 1){
+  if (PUState == LOW && PDState == HIGH){
   return (3);
   }}}}}
 

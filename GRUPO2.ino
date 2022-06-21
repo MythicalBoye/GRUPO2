@@ -20,7 +20,7 @@ void loop() {
              break;
     case  2: EstadoLed(2,ON);
              break;
-    default: EstadoLed(1,ON); EstadoLed(2,ON);
+    default: EstadoLed(1,OFF); EstadoLed(2,OFF);
              break;
     }
   delay(1000);
